@@ -1,0 +1,118 @@
+#pageHome{
+  color: #555;
+ .header{
+   height: 80px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-direction: row;
+   background-color: #333;
+   padding: 0 10px;
+   .logo {
+      img {
+        height: 70px;
+        animation: rotate 15s infinite;
+      }
+   }
+   .link {
+     img {
+       height: 30px;
+       margin-right: 20px;
+     }
+   }
+
+ }
+ .plus-icon {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  border-radius: 30px;
+  height: 60px;
+  width: 60px;
+  background: #a67ce2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  &:hover {
+    background: #a67ce2a3;
+  }
+  i {
+    margin: 0 !important;
+  }
+}
+
+ .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: auto;
+    min-width: 1024px;
+    .design, .frotend, .chatting {
+      width: calc(~'100% / 3');
+      height: 100vh;
+    }
+    .msgcard {
+      .title {
+        height: 60px;
+        width: 100%;
+        color: #fff;
+        font-size: 24px;
+        text-align: center;
+        line-height: 60px;
+        border-radius: 20px 20px 0 0;
+      }
+      .list {
+        height: calc(~'100vh - 60px');
+        width: 100%;
+        overflow: auto;
+        border-right: 1px solid #ccc;
+        li:nth-child(2n) {
+          background: #dfdcdc4a;
+        }
+        li:hover {
+          background: #dfdcdc4a;
+        }
+        .no-data {
+          text-align: center;
+          margin-top: 40px;
+          color: #9f9997;
+        }
+        .item {
+          display: flex;
+          justify-content: space-between;
+          color: #9b9997;
+          padding: 10px;
+          cursor: pointer;
+          .item-content {
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+          }
+          .status {
+            font-size: xx-small;
+            background: #f3eeee;
+            width: 40px;
+            text-align: center;
+            margin: auto 0;        
+          }
+          .operation {
+            display: flex;
+          }
+        }
+      }
+    }
+ }
+}
+
+@keyframes rotate {
+  0%{
+    transform: rotateY(0);
+  }
+  10%{
+    transform: rotateY(360deg);
+  }
+  100%{
+    transform: rotateY(360deg);
+  }
+}

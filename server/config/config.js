@@ -1,0 +1,1 @@
+exports.db = 'mongodb://47.93.48.236:27017/weekly';
