@@ -35,4 +35,5 @@ dist/
 # IDE/Editor data
 .idea/
 
-npm-npm-debug.log.*
+npm-debug.log*
+.vscode
