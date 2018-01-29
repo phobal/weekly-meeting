@@ -1,10 +1,13 @@
-import { prefix, add, remove, list, update } from '../meta';
 import request from '../utils/request';
 
+const { prefix, add, remove, list, update } = require('../meta').default;
+
 export function Add(data) {
-  const url = 'http://localhost:3000/add';
+  // const url = 'http://localhost:3000/add';
+  const { path, method } = add;
+  const url = `${prefix}${path}`;
   return request(url, {
-    method: 'POST',
+    method,
     body: JSON.stringify(data),
     headers: {
       'Content-Type': 'application/json',
@@ -13,11 +16,10 @@ export function Add(data) {
 }
 
 export function List() {
-  // const { path, method } = add;
-  // const url = `${prefix}{path}`;
-  const url = 'http://localhost:3000/list';
+  const { path, method } = list;
+  const url = `${prefix}${path}`;
   return request(url, {
-    method: 'GET',
+    method,
     headers: {
       'Content-Type': 'application/json',
     }
@@ -25,9 +27,10 @@ export function List() {
 }
 
 export function Remove(id) {
-  const url = `http://localhost:3000/remove?id=${id}`;
+  const { path, method } = remove;
+  const url = `${prefix}${path}?id=${id}`;
   return request(url, {
-    method: 'DELETE',
+    method,
     headers: {
       'Content-Type': 'application/json',
     }
@@ -35,9 +38,10 @@ export function Remove(id) {
 }
 
 export function Update(data) {
-  const url = 'http://localhost:3000/update';
+  const { path, method } = update;
+  const url = `${prefix}${path}`;
   return request(url, {
-    method: 'POST',
+    method,
     body: JSON.stringify(data),
     headers: {
       'Content-Type': 'application/json',

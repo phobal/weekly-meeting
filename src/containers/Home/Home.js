@@ -50,6 +50,7 @@ export default class Home extends Component {
   }
   onSubmit() {
     const { id, name, type } = this.state;
+    const that = this;
     const {
       topicStore: {
         addTopic,
@@ -65,6 +66,7 @@ export default class Home extends Component {
         type,
       }, () => {
         Close();
+        that.reset();
       });
     } else {
       updateTopic({
@@ -73,8 +75,16 @@ export default class Home extends Component {
         type,
       }, () => {
         Close();
+        that.reset();        
       })
     }
+  }
+  reset() {
+    this.setState({
+      id: null,
+      name: '',
+      type: 'design'
+    })
   }
   onChange(e, { name, value }) {
     this.setState({ [name]: value })
