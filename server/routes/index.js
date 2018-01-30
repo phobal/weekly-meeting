@@ -41,6 +41,25 @@ const router = (app) => {
       }
     });
   });
+  app.delete('/deleteall', (req, res) => {
+    topic.deleteAll((err) => {
+      if(err) {
+        errorHandle(res);
+      } else {
+        successHandle(res);
+      }
+    })
+  });
+  app.delete('/deleteByType', (req, res) => {
+    const type = req.query.type;
+    topic.deleteByType(type, (err) => {
+      if(err) {
+        errorHandle(res);
+      } else {
+        successHandle(res);
+      }
+    })
+  })
 }
 
 function errorHandle(res, err) {
