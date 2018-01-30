@@ -24,3 +24,22 @@ exports.addUser = function(data, callback) {
     callback && callback(err);
   });
 }
+
+exports.getAllUser = function(callback) {
+  UserSchemaData.find({}, (err, data) => {
+    callback && callback(err, data);
+  });
+}
+
+exports.removeUserById = function(_id, callback) {
+  UserSchemaData.findByIdAndRemove({ _id }, (err) => {
+    callback && callback(err);
+  })
+}
+
+exports.modifyUser = function(data, callback) {
+  const { _id } = data;
+  UserSchemaData.findByIdAndUpdate({ _id }, data, (err) => {
+    callback && callback(err);
+  });
+}

@@ -1,4 +1,5 @@
 const topic = require('../dao/topic');
+const user = require('../dao/user');
 
 const router = (app) => {
   app.get('/list', (req, res) => {
@@ -14,7 +15,7 @@ const router = (app) => {
   app.post('/add', (req, res) => {
     const data = req.body;
     topic.addTopic(data, (err) => {
-      if(err) {
+      if (err) {
         errorHandle(res, err);
       } else {
         successHandle(res);
@@ -43,7 +44,7 @@ const router = (app) => {
   });
   app.delete('/deleteall', (req, res) => {
     topic.deleteAll((err) => {
-      if(err) {
+      if (err) {
         errorHandle(res);
       } else {
         successHandle(res);
@@ -53,13 +54,55 @@ const router = (app) => {
   app.delete('/deleteByType', (req, res) => {
     const type = req.query.type;
     topic.deleteByType(type, (err) => {
-      if(err) {
+      if (err) {
         errorHandle(res);
       } else {
         successHandle(res);
       }
     })
+  });
+
+  // USer
+
+  app.post('/user/add', (req, res) => {
+    const data = req.body;
+    user.addUser(data, (err) => {
+      if (err) {
+        errorHandle(res, err);
+      } else {
+        successHandle(res);
+      }
+    })
   })
+  app.get('/user/list', (req, res) => {
+    user.getAllUser((err, data) => {
+      if (err) {
+        errorHandle(res, err);
+      } else {
+        successHandle(res, data);
+      }
+    });
+  });
+  app.delete('/user/remove', (req, res) => {
+    const { _id } = req.query;
+    user.removeUserById(_id, (err) => {
+      if (err) {
+        errorHandle(err, res);
+      } else {
+        successHandle(res);
+      }
+    })
+  });
+  app.post('/user/update', (req, res) => {
+    const data = req.body;
+    user.modifyUser(data, (err) => {
+      if (err) {
+        errorHandle(err, res);
+      } else {
+        successHandle(res);
+      }
+    });
+  });
 }
 
 function errorHandle(res, err) {
