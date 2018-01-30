@@ -115,7 +115,7 @@ export default class Home extends Component {
     } = this.props;
     const options = [
       { key: '1', text: '设计类', value: 'design' },
-      { key: '2', text: '前端类', value: 'frotend' },
+      { key: '2', text: '前端类', value: 'frontend' },
       { key: '3', text: '闲聊类', value: 'chatting' },      
     ]
     const { name, type } = this.state;

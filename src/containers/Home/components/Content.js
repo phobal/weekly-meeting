@@ -6,7 +6,7 @@ export default class Content extends Component {
   render() {
     const { topics } = this.props; 
     const design = _.filter(topics, d => d.type === 'design');
-    const frotend = _.filter(topics, d => d.type === 'frotend');
+    const frotend = _.filter(topics, d => d.type === 'frontend');
     const chatting = _.filter(topics, d => d.type === 'chatting');        
     return (
       <div className="content">
