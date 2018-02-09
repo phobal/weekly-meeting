@@ -1,5 +1,6 @@
 const topic = require('../dao/topic');
 const user = require('../dao/user');
+const superagent = require('superagent');
 
 const router = (app) => {
   app.get('/list', (req, res) => {
@@ -102,6 +103,25 @@ const router = (app) => {
         successHandle(res);
       }
     });
+  });
+
+  app.get('/gethothouse', (req, res) => {
+    // fetch('http://192.168.26.124:1234/').then(function(data){
+    //   console.log(data);
+    // })
+    superagent.get('http://192.168.26.124:1234/').end((err, resp) => {
+      // console.log(resp.text);
+      if (err) {
+        errorHandle(err, resp);
+      } else {
+        // successHandle(resp.text);
+        res.json({
+          success: true,
+          data: resp.text || '',
+          message: ''
+        })
+      }
+    })
   });
 }
 
